@@ -63,11 +63,7 @@ class MetaData
         $model = $this->model;
 
         return $this->allData([
-            'mobile' => $model->mobile,
-            'full_name' => $model->full_name,
-        ],only: [
-            self::CREATED,
-            self::UPDATED,
+            //
         ]);
     }
 
@@ -78,6 +74,7 @@ class MetaData
          */
         $model = $this->model;
         return $this->allData([
+            //
         ]);
     }
 
@@ -88,13 +85,7 @@ class MetaData
          */
         $model = $this->model;
         return $this->allData([
-            'voucher_id' => $model->voucher_id,
-            'product_id' => $model->product_id,
-            'product_title' => $model->product->title,
-            'voucher_code' => $model->voucher->code,
-            'product_slug' => $model->product->slug,
-        ],only: [
-            self::CREATED,
+            //
         ]);
     }
 }
