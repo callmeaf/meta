@@ -3,6 +3,8 @@
 namespace Callmeaf\Meta\Utilities\V1\Api\Meta;
 
 use Callmeaf\Meta\Traits\MetaDataLifecycles;
+use Callmeaf\Order\Models\Order;
+use Callmeaf\Order\Models\OrderItem;
 use Callmeaf\Payment\Models\Payment;
 use Callmeaf\User\Models\User;
 use Callmeaf\Voucher\Models\VoucherProduct;
@@ -28,9 +30,9 @@ class MetaData
 
     public function make(): ?array
     {
-        $refClass = new \ReflectionClass($this->model);
-        $className = $refClass->getShortName();
-        $funcName = Str::of($className)->camel()->toString();
+        $funcName = Str::of(
+            string: getShortNameClass(objectOrClass: $this->model)
+        )->camel()->toString();
 
         return $this->$funcName();
     }
@@ -88,4 +90,16 @@ class MetaData
             //
         ]);
     }
+
+    private function order(): ?array
+    {
+        /**
+         * @var Order $model
+         */
+        $model = $this->model;
+        return $this->allData([
+            //
+        ]);
+    }
+
 }
